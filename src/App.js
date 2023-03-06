@@ -1,21 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "./NavBar";
 import FestivalsHome from "./FestivalsHome";
-import Reviews from "./Reviews";
+import Home from "./Home";
 import Error from "./Error";
 import Festival from "./Festival";
 import FestivalForm from "./FestivalForm";
 
 function App() {
+  const [festivals, setFestivals] = useState([])
+
+  useEffect(() => {
+    fetch("http://localhost:9292/festivals")
+    .then((r) => r.json())
+    .then((festivals) => setFestivals(festivals))
+}, [])
+
   return (
     <div>
       <Router>
         <NavBar />
         <Routes>
-          <Route path="/" element={<FestivalsHome/>}/>
-          <Route path="/reviews" element = {<Reviews />}/>
-          <Route path="/festivals/:id" element = {<Festival />}/>
+          <Route path="/" element = {<Home />}/>
+          <Route path="/festivals" element={<FestivalsHome festivals={festivals}/>}/>
+          <Route path="/festivals/:id" element = {<Festival festivals={festivals}/>}/>
           <Route path="/*" element={<Error />}/>
         </Routes>
       </Router>
