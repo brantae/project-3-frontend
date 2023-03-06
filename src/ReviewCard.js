@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react'
 
-function ReviewCard({review}) {
+function ReviewCard({ review }) {
 
     const { comment } = review
 
+    function handleDeleteClick() {
 
+    }
 
 
     return (
         <div>
-            <p> {comment} </p>
+            <br></br>
+            <p> ~{comment}~ </p>
+            <button onClick={handleDeleteClick}>Delete Review</button>
         </div>
     )
 }
