@@ -7,6 +7,30 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+nav {
+  display: flex;
+  background: hwb(298 57% 0%);
+  padding: 8px 20px;
+  position: sticky;
+  top: 0
+}
+
+.nav a {
+  color: white;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: .25rem;
+  font-size: large;
+}
+
+header h1 {
+  font-size: 2.5em;
+  font-weight: 800;
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
