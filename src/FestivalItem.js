@@ -21,9 +21,28 @@ function FestivalItem() {
         
     }, [])
 
-    
+    function handleReviewDelete(id) {
+        console.log("deleting...")
+        fetch(`http://localhost:9292/reviews/${id}`, {
+            method: "DELETE",
+        })
+        .then(() => onReviewDelete(id))
+    }
 
-    const reviews = festival.reviews.map(review => <ReviewCard key={review.id} review={review}/>)
+    function onReviewDelete(id) {
+        const updatedReviews = festival.reviews.filter((f) => f.id !== id)
+        setFestival({...festival, reviews: updatedReviews})
+    }
+
+
+
+    const reviews = festival.reviews.map(review => 
+    <ReviewCard 
+        key={review.id} 
+        review={review}
+        onReviewDelete={handleReviewDelete}
+        festival_id={festival.id}
+        />)
 
     return (
         

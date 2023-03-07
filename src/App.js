@@ -13,7 +13,7 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:9292/festivals")
     .then((r) => r.json())
-    .then((festivals) => setFestivals(festivals))
+    .then((data) => setFestivals(data))
 }, [])
 
   return (

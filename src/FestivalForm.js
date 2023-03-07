@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form } from "semantic-ui-react";
 
-function FestivalForm({ onAddFestival }) {
+function FestivalForm({ onAddFestival, festivals }) {
   
   const [formData, setFormData] = useState({
     name: '',
@@ -10,7 +10,7 @@ function FestivalForm({ onAddFestival }) {
     website: ''
   })
 
-  function handleChange(event) {
+  function handleChangeSubmit(event) {
       setFormData({
       ...formData,  [event.target.name]: event.target.value
     })
@@ -35,8 +35,8 @@ function FestivalForm({ onAddFestival }) {
       body: JSON.stringify(newFestival),
     })
     .then((r) => r.json())
-    .then((f) =>{
-      onAddFestival(formData)
+    .then((data) =>{
+      onAddFestival(data)
     })
   }
 
@@ -52,7 +52,7 @@ function FestivalForm({ onAddFestival }) {
             placeholder="festival name"
             name="name"
             value={formData.name}
-            onChange={handleChange} 
+            onChange={handleChangeSubmit} 
             />
           <Form.Input
             required
@@ -60,7 +60,7 @@ function FestivalForm({ onAddFestival }) {
             placeholder="festival city"
             name="city"
             value={formData.city}
-            onChange={handleChange} 
+            onChange={handleChangeSubmit} 
           />
           <Form.Input
             required
@@ -68,7 +68,7 @@ function FestivalForm({ onAddFestival }) {
             placeholder="month it occurs"
             name="month"
             value={formData.month}
-            onChange={handleChange} 
+            onChange={handleChangeSubmit} 
             />
             <Form.Input
             required
@@ -76,7 +76,7 @@ function FestivalForm({ onAddFestival }) {
             placeholder="link to site"
             name="website"
             value={formData.website}
-            onChange={handleChange} 
+            onChange={handleChangeSubmit} 
             />
           </Form.Group>
         <Form.Button>submit</Form.Button>

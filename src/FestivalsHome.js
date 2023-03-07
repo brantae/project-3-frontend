@@ -18,7 +18,7 @@ function FestivalsHome({ festivals, setFestivals }) {
         <div>
             <h1> festivals of bama </h1>
             <ul>
-             {festivalList}
+                {festivalList}
             </ul>
             <FestivalForm onAddFestival={handleAddFestival} festivals={festivals}/>
     </div>
