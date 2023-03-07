@@ -1,4 +1,4 @@
-# Phase 3 Project Frontend: Alabama's Best Music Festivals
+# Phase 3 Project Frontend: Alabama's Best Music Festivals 🤠
 
 
 ## Overview
@@ -25,6 +25,8 @@ $ npm start
 ```
 
 The application is now running! 
+
+If you forgot to set up the backend, [go here](https://github.com/brantae/project-3-backend)!
 
 ## Stretch Goals
 
