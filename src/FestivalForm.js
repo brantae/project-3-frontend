@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form } from "semantic-ui-react";
 
-function FestivalForm({ onAddFestival, festivals }) {
+function FestivalForm({ onAddFestival }) {
   
   const [formData, setFormData] = useState({
     name: '',
