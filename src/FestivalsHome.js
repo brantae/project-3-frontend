@@ -16,7 +16,7 @@ function FestivalsHome({ festivals, setFestivals }) {
 
     return (
         <div>
-            <h1> festivals of bama </h1>
+            <h1> festivals of bama 🤠 </h1>
             <ul>
                 {festivalList}
             </ul>
