@@ -35,8 +35,15 @@ function FestivalForm({ onAddFestival }) {
       body: JSON.stringify(newFestival),
     })
     .then((r) => r.json())
-    .then((data) =>{
+    .then((data) => {
       onAddFestival(data)
+    })
+
+    setFormData({
+    name: '',
+    city: '',
+    month: '',
+    website: ''
     })
   }
 

@@ -18,6 +18,9 @@ function EditReview({ onReviewEdit, id }) {
         })
         .then((res) => res.json())
         .then((data) => onReviewEdit(data))
+
+        setNewComment("")
+
     }
 
     function handleChange(e) {

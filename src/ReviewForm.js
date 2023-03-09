@@ -34,6 +34,10 @@ function ReviewForm({ onAddReview, festival_id }) {
         })
         .then((res) => res.json())
         .then((data) => onAddReview(data))
+
+        setNewReview({
+            comment:''
+        })
     }
 
 
