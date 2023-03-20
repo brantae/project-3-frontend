@@ -1,7 +1,7 @@
 import React from 'react'
 import EditReview from './EditReview'
 
-function ReviewCard({ festivals, setFestivals, review, onReviewDelete, onReviewEdit }) {
+function ReviewCard({ festivals, review, onReviewDelete, onReviewEdit }) {
 
     console.log(festivals)
 
