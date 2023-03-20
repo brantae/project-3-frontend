@@ -3,16 +3,17 @@ import FestivalLink from './FestivalLink'
 import FestivalForm from './FestivalForm'
 
 
-function FestivalsHome({ festivals, setFestivals }) {
+function AllFestivalsRendered({ festivals, setFestivals }) {
 
-    const festivalList = festivals.map( festival => <FestivalLink key={festival.id} festival={festival}/>)
+    const festivalList = festivals.map( festival => 
+    <FestivalLink 
+        key={festival.id} 
+        festival={festival}
+        />)
 
     function handleAddFestival(newFestival) {
         setFestivals([...festivals, newFestival])
     }
-
-
-
 
     return (
         <div>
@@ -25,4 +26,4 @@ function FestivalsHome({ festivals, setFestivals }) {
         )
 }
 
-export default FestivalsHome;
+export default AllFestivalsRendered;

@@ -1,15 +1,16 @@
 import React from 'react'
 import EditReview from './EditReview'
 
-function ReviewCard({ review, onReviewDelete, onReviewEdit }) {
+function ReviewCard({ festivals, setFestivals, review, onReviewDelete, onReviewEdit }) {
+
+    console.log(festivals)
 
     const { id, comment } = review
 
     function handleDeleteClick() {
         onReviewDelete(id)
     }
-
-
+    
 
 
     return (
@@ -18,7 +19,7 @@ function ReviewCard({ review, onReviewDelete, onReviewEdit }) {
             <p> ~{comment}~ </p>
             <EditReview
                 key = {id}
-                id= {id}
+                id = {id}
                 onReviewEdit = {onReviewEdit} 
                 />
             <button onClick={handleDeleteClick}>Delete Review</button>

@@ -3,8 +3,6 @@ import { Form } from "semantic-ui-react";
 
 function ReviewForm({ onAddReview, festival_id }) {
 
-  
-
     const [newReview, setNewReview] = useState({
         comment: '',
         festival_id: festival_id

@@ -1,27 +1,47 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+
 import ReviewCard from "./ReviewCard";
 import ReviewForm from "./ReviewForm";
 
+function FestivalItem({ festivals, setFestivals }) {
 
-
-function FestivalItem() {
-
-    const [festival, setFestival] = useState({
-        reviews: []
-    })
+    const { id } = useParams()
     
 
-    const params = useParams()
+    const [festival, setFestival] = useState({
+        name: "",
+        city: "",
+        month: "",
+        name: "",
+        reviews: [],
+        website: ""
+    })
 
     useEffect(() => {
-        fetch(`http://localhost:9292/festivals/${params.id}`)
-        .then(res => res.json())
-        .then(data => {
-            setFestival(data)
+        if (festivals.length > 0) {
+            const currentFestival = festivals.find((f) =>
+            f.id === parseInt(id)
+            
+        )
+        console.log(currentFestival)
+
+            setFestival(currentFestival)
+        }
+    }, [festivals])
+
+    function handleEditReview(editedReview) {
+    
+        const updatedReviews = festivals.reviews.map((review) => {
+            if (review.id === editedReview.id) {
+                return editedReview
+            }
+            return review
         })
-        
-    }, [])
+    
+        setFestivals({...festivals, reviews: updatedReviews})
+    
+    }
 
     function handleReviewDelete(id) {
         console.log("deleting...")
@@ -32,52 +52,38 @@ function FestivalItem() {
     }
 
     function onReviewDelete(id) {
-        const updatedReviews = festival.reviews.filter((f) => f.id !== id)
-        setFestival({...festival, reviews: updatedReviews})
-    }
+    
+        const updatedReviews = festivals.reviews.filter((f) => f.id !== id)
+        setFestivals({...festivals, reviews: updatedReviews})
+        }
+    
 
     function handleAddReview(newReview) {
-        setFestival({...festival, reviews: [...festival.reviews, newReview]})
+        setFestivals({...festivals, reviews: [...festivals.reviews, newReview]})
     }
-
-    function handleEditReview(editedReview) {
-        const updatedReviews = festival.reviews.map((review) => {
-            if (review.id === editedReview.id) {
-                return editedReview
-            }
-            return review
-        })
-        setFestival({...festival, reviews: updatedReviews})
-    }
-
 
 
     const reviews = festival.reviews.map(review => 
-    <ReviewCard 
-        key={review.id} 
+        <ReviewCard
+        festivals={festivals} 
         review={review}
-        onReviewDelete={handleReviewDelete}
-        festival_id={festival.id}
+        key={review.id}
         onReviewEdit={handleEditReview}
-        />)
+        onReviewDelete={handleReviewDelete}/>)
 
+    
     return (
-        
         <div>
+            
             <h1>{festival.name}</h1>
             <h3>Located in: {festival.city}, Alabama</h3>
             <h3>Typically occurs in {festival.month}</h3>
             <h3>Visit their site: {festival.website}</h3>
-            <br></br>
             <h1>Reviews:</h1>
-            <ReviewForm 
-                key={festival.id} 
-                reviews={festival.reviews} 
-                festival_id={festival.id}
-                onAddReview={handleAddReview}/>
             <h3>{reviews}</h3>
+            <ReviewForm onAddReview={handleAddReview}/>
         </div>
-            
+    
     );
 }
 
